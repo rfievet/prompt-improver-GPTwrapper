@@ -1,0 +1,28 @@
+{
+    "manifest_version": 3,
+    "name": "GPT Prompt Sender",
+    "version": "1.0",
+    "permissions": ["scripting", "storage", "activeTab"],
+    "host_permissions": ["https://chat.openai.com/*", "http://localhost:11434/*"],
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "commands": {
+        "open_extension": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+G",
+            "mac": "Command+Shift+L"
+          },
+          "description": "Open GPT Wrapper extension"
+        }
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://chat.openai.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
